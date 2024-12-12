@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form onsubmit="return data()" action="abc.html">
+      <label for="userId">UserId:</label>
+      <input type="text" id="userId" name="userId" />
+      <br /><br />
+      <label for="contact">Contact:</label>
+      <input type="text" id="contact" name="contact" />
+      <br /><br />
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" />
+      <br /><br />
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" />
+      <br /><br />
+      <button type="submit">Submit</button>
+    </form>
+
+    <script>
+      function data() {
+        var userId = document.getElementById("userId").value;
+        var contact = document.getElementById("contact").value;
+        var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("confirmPassword").value;
+
+        // Check for empty fields
+        if (
+          userId === "" ||
+          contact === "" ||
+          password === "" ||
+          confirmPassword === ""
+        ) {
+          alert("All fields are mandatory");
+          return false;
+        }
+
+        // Validate contact number length
+        if (contact.length !== 10) {
+          alert("Contact number should be exactly 10 digits");
+          return false;
+        }
+
+        // Validate that contact contains only numbers
+        if (isNaN(contact)) {
+          alert("Only numbers are allowed in the contact field");
+          return false;
+        }
+
+        // Validate password match
+        if (password !== confirmPassword) {
+          alert("Passwords do not match");
+          return false;
+        }
+
+        // Validation passed
+        return true;
+      }
+    </script>
+  </body>
+</html>
